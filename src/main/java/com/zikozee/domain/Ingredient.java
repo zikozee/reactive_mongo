@@ -18,7 +18,7 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    @DBRef
+    @DBRef  // best bet use loose coupling
     private UnitOfMeasure uom;
 
     public Ingredient() {
