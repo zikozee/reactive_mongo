@@ -2,10 +2,8 @@ package com.zikozee.converters;
 
 import com.zikozee.commands.RecipeCommand;
 import com.zikozee.domain.*;
-import guru.springframework.domain.*;
 import org.junit.Before;
 import org.junit.Test;
-import zikozee.domain.*;
 
 import static org.junit.Assert.*;
 

@@ -4,8 +4,8 @@ import com.zikozee.domain.*;
 import com.zikozee.repositories.CategoryRepository;
 import com.zikozee.repositories.RecipeRepository;
 import com.zikozee.repositories.UnitOfMeasureRepository;
-import guru.springframework.domain.*;
-import zikozee.domain.*;
+import com.zikozee.repositories.reactive.CategoryReactiveRepository;
+import com.zikozee.repositories.reactive.RecipeReactiveRepository;
 import com.zikozee.repositories.reactive.UnitOfMeasureReactiveRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Autowired
     UnitOfMeasureReactiveRepository reactiveRepository;
 
+    @Autowired
+    CategoryReactiveRepository categoryReactiveRepository;
+
+    @Autowired
+    RecipeReactiveRepository recipeReactiveRepository;
+
     public RecipeBootstrap(CategoryRepository categoryRepository,
                            RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
         this.categoryRepository = categoryRepository;
@@ -48,8 +54,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
 
-        log.info("#####");
-        log.info("Count: {}", reactiveRepository.count().block());
+        log.error("#####");
+        log.error("Count: {}", reactiveRepository.count().block());
+        log.error("Category Count: {}", categoryReactiveRepository.count().block());
+        log.error("RecipeCount: {}", recipeReactiveRepository.count().block());
 
     }
 
