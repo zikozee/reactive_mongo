@@ -1,6 +1,7 @@
 package com.zikozee.services;
 
 import com.zikozee.commands.UnitOfMeasureCommand;
+import reactor.core.publisher.Flux;
 
 import java.util.Set;
 
@@ -9,5 +10,5 @@ import java.util.Set;
  */
 public interface UnitOfMeasureService {
 
-    Set<UnitOfMeasureCommand> listAllUoms();
+    Flux<UnitOfMeasureCommand> listAllUoms();
 }
